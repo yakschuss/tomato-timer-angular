@@ -1,6 +1,6 @@
 (function () {
   function MainCtrl(Timer) {
-    this.timer = Timer
+    this.timer = Timer;
   }
 
   angular
