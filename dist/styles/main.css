@@ -1,0 +1,113 @@
+html {
+  font-family: "Verdana";
+}
+
+/*** BUTTON PAGE ***/
+.button-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+
+.timer-column {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.button-div {
+  display: flex;
+  justify-content: center;
+  background-image: url("/assets/images/tomato.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: center;
+  width: 300px;
+  height: 300px;
+}
+
+.pomodoro-button {
+  display: flex;
+  align-items: center;
+}
+.pomodoro-button button {
+  background-color: white;
+  color: #449D44;
+}
+
+.timer-div {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+}
+.timer-div p {
+  font-size: 100px;
+  color: #8E070D;
+}
+@media screen and (max-width: 480px) {
+  .timer-div p {
+    font-size: 60px;
+  }
+}
+
+.heading {
+  font-size: 40px;
+  color: #8E070D;
+  letter-spacing: .7px;
+}
+
+.side-bar-menu {
+  width: 400px;
+  height: 100%;
+  background-color: #8E070D;
+  color: white;
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.new-task-input {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.new-task-submit {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.task-list {
+  margin-top: 33px;
+}
+@media screen and (max-width: 480px) {
+  .task-list {
+    width: 30%;
+    margin-right: 30px;
+  }
+}
+.task-list li {
+  font-size: 23px;
+  letter-spacing: .5px;
+  margin-bottom: 20px;
+}
+.task-list .check-mark:hover {
+  font-size: 1.2em;
+  color: #449D44;
+}
+
