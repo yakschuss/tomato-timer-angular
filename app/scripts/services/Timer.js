@@ -23,6 +23,7 @@
           Timer.completedSessions = 0;
           Timer.onBreak = true;
           Timer.btnTxt = "Take A Break";
+          myDing.play();
         }
 
         else if(Timer.time == -1) {
@@ -31,6 +32,7 @@
           Timer.time = 2;
           Timer.completedSessions += 1;
           Timer.btnTxt = "Next Session";
+          myDing.play();
         }
 
 
@@ -63,12 +65,18 @@
         Timer.time -= 1;
         if(Timer.time == -1) {
           $interval.cancel(Timer.timer);
+          myDing.play();
           Timer.isRunning = false;
           Timer.btnTxt = "Nice Work! Start Again!"
           Timer.time = 2;
         }
       }.bind(this), 1000);
     }
+
+    var myDing = new buzz.sound( "/assets/sounds/airhorn.mp3", {
+      preload: true
+    });
+
 
     return Timer
 
