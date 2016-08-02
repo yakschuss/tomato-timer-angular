@@ -14,11 +14,23 @@
     <ui-view></ui-view>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/buzz/1.1.10/buzz.min.js"></script>
     <script src="/scripts/app.js"></script>
     <script src="/scripts/controllers/MainCtrl.js"></script>
     <script src="/scripts/services/Timer.js"></script>
     <script src="/scripts/filters/timecode.js"></script>
+    <script>
+      // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBMYb1IEoTB2dE5bQ3dC6Rvx2gu4PmcdkQ",
+      authDomain: "tomato-timer-82215.firebaseapp.com",
+      databaseURL: "https://tomato-timer-82215.firebaseio.com",
+      storageBucket: "",
+    };
+    firebase.initializeApp(config);
+    </script>
   </body>
 </html>
