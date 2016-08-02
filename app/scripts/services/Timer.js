@@ -1,14 +1,113 @@
 (function () {
-  function Timer($rootScope) {
+  function Timer($interval) {
 
     var Timer = {};
 
+    Timer.time = 2  ;
+    Timer.btnTxt = "Start";
+    Timer.workTimer = true;
+    Timer.completedSessions = 0;
+
+
+    Timer.start = function() {
+
+      Timer.isRunning = true;
+      Timer.btnTxt = "Reset";
+      Timer.workTimer = true;
+      Timer.breakTimer = false;
+
+      Timer.timer = $interval(function (){
+        Timer.time -= 1;
+
+        if(Timer.time == -1 && Timer.completedSessions == 3) {
+          $interval.cancel(Timer.timer);
+          Timer.isRunning = false;
+          Timer.time = 30;
+          Timer.completedSessions = 0;
+          Timer.onBreak = true;
+          Timer.btnTxt = "Take A Break";
+          myDing.play();
+        }
+        else if (Timer.time == -1 && Timer.completedSessions > 0 && Timer.completedSessions < 3){
+          $interval.cancel(Timer.timer);
+          Timer.isRunning = false;
+          Timer.time = 5;
+          Timer.completedSessions += 1;
+          Timer.onBreak = true;
+          Timer.btnTxt = "Take A Break";
+          myDing.play();
+        }
+ 
+
+        else if(Timer.time == -1) {
+          $interval.cancel(Timer.timer);
+          Timer.isRunning = false;
+          Timer.time = 2  ;
+          Timer.completedSessions += 1;
+          Timer.btnTxt = "Next Session";
+          myDing.play();
+        }
+
+
+      }.bind(this), 1000);
+    }
+
+
+
+
+    Timer.reset = function() {
+      if (angular.isDefined(Timer.timer)) {
+        $interval.cancel(Timer.timer);
+        Timer.isRunning = false;
+        if (Timer.workTimer == true) {
+          Timer.time = 2;
+          Timer.btnTxt = "Start Working";
+        } else {
+          Timer.time = 5;
+          Timer.onBreak = true;
+          Timer.btnTxt = "Restart Break";
+        }
+
+      }
+    }
+
+    Timer.break = function() {
+      Timer.isRunning = true;
+
+      
+      Timer.workTimer = false;
+      Timer.breakTimer = true;
+
+      Timer.onBreak = false;
+      Timer.breakMsg = "Start Break"
+
+      Timer.btnTxt = "Reset Timer";
+
+      Timer.timer = $interval(function () {
+
+        Timer.time -= 1;
+        if(Timer.time == -1) {
+          $interval.cancel(Timer.timer);
+          myDing.play();
+          Timer.isRunning = false;
+          Timer.btnTxt = "Nice Work! Start Again!"
+          Timer.time = 2  ;
+        }
+      }.bind(this), 1000);
+    }
+
+    var myDing = new buzz.sound( "/assets/sounds/airhorn.mp3", {
+      preload: true
+    });
+
+
     return Timer
+
   }
 
   angular
     .module('tomatoTimer')
-    .factory('Timer', ['$rootScope', Timer ]);
+    .factory('Timer', ['$interval', Timer ]);
 
 
 })();

@@ -1,10 +1,14 @@
 (function () {
-  function MainCtrl(Timer) {
+  function MainCtrl($scope, Timer) {
+
     this.timer = Timer;
-  }
+    $scope.timer = Timer;
+
+ }
+
 
   angular
     .module('tomatoTimer')
-    .controller('MainCtrl', ['Timer', MainCtrl ]);
-  
+    .controller('MainCtrl', [ '$scope', 'Timer', MainCtrl ]);
+
 })();
