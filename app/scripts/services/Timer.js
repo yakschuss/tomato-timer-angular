@@ -3,8 +3,9 @@
 
     var Timer = {};
 
-    Timer.time = 25 * 60;
+    Timer.time = 2  ;
     Timer.btnTxt = "Start";
+    Timer.workTimer = true;
     Timer.completedSessions = 0;
 
 
@@ -12,6 +13,8 @@
 
       Timer.isRunning = true;
       Timer.btnTxt = "Reset";
+      Timer.workTimer = true;
+      Timer.breakTimer = false;
 
       Timer.timer = $interval(function (){
         Timer.time -= 1;
@@ -19,17 +22,27 @@
         if(Timer.time == -1 && Timer.completedSessions == 3) {
           $interval.cancel(Timer.timer);
           Timer.isRunning = false;
-          Timer.time = 5 * 60;
+          Timer.time = 30;
           Timer.completedSessions = 0;
           Timer.onBreak = true;
           Timer.btnTxt = "Take A Break";
           myDing.play();
         }
+        else if (Timer.time == -1 && Timer.completedSessions > 0 && Timer.completedSessions < 3){
+          $interval.cancel(Timer.timer);
+          Timer.isRunning = false;
+          Timer.time = 5;
+          Timer.completedSessions += 1;
+          Timer.onBreak = true;
+          Timer.btnTxt = "Take A Break";
+          myDing.play();
+        }
+ 
 
         else if(Timer.time == -1) {
           $interval.cancel(Timer.timer);
           Timer.isRunning = false;
-          Timer.time = 25 * 60;
+          Timer.time = 2  ;
           Timer.completedSessions += 1;
           Timer.btnTxt = "Next Session";
           myDing.play();
@@ -46,14 +59,24 @@
       if (angular.isDefined(Timer.timer)) {
         $interval.cancel(Timer.timer);
         Timer.isRunning = false;
-        Timer.time = 25 * 60;
-        Timer.btnTxt = "Start Working";
+        if (Timer.workTimer == true) {
+          Timer.time = 2;
+          Timer.btnTxt = "Start Working";
+        } else {
+          Timer.time = 5;
+          Timer.onBreak = true;
+          Timer.btnTxt = "Restart Break";
+        }
 
       }
     }
 
     Timer.break = function() {
       Timer.isRunning = true;
+
+      
+      Timer.workTimer = false;
+      Timer.breakTimer = true;
 
       Timer.onBreak = false;
       Timer.breakMsg = "Start Break"
@@ -68,7 +91,7 @@
           myDing.play();
           Timer.isRunning = false;
           Timer.btnTxt = "Nice Work! Start Again!"
-          Timer.time = 25 * 60;
+          Timer.time = 2  ;
         }
       }.bind(this), 1000);
     }

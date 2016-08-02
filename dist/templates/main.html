@@ -22,7 +22,8 @@
     <div class="row">
       <div class="button-div">
         <div class="pomodoro-button">
-          <button type="button" class='btn btn-danger' ng-show="!main.timer.isRunning && !main.timer.onBreak"  ng-click="main.timer.start()"> {{ main.timer.btnTxt }}</button>
+          <button type="button" class='btn btn-danger'
+            ng-show="!main.timer.isRunning && !main.timer.onBreak" ng-click="main.timer.start()" > {{ main.timer.btnTxt }}</button>
 
           <button type="button" class='btn btn-danger' ng-show="main.timer.isRunning"  ng-click="main.timer.reset()"> {{ main.timer.btnTxt }}</button>
 
