@@ -76,6 +76,11 @@ html {
   font-size: 30px;
   text-transform: uppercase;
 }
+@media screen and (max-width: 480px) {
+  .task-header {
+    font-size: 20px;
+  }
+}
 
 .new-task-input {
   display: flex;
@@ -111,5 +116,4 @@ html {
   font-size: 2.2em;
   color: #449D44;
 }
-
 
