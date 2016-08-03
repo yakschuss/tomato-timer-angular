@@ -94,6 +94,7 @@ html {
 
 .task-list {
   margin-top: 33px;
+  list-style: none;
 }
 @media screen and (max-width: 480px) {
   .task-list {
@@ -106,8 +107,17 @@ html {
   letter-spacing: .5px;
   margin-bottom: 20px;
 }
-.task-list .check-mark:hover {
+.task-list .task-item-icon .check:hover {
   font-size: 1.2em;
   color: #449D44;
+}
+
+.task-list .task-item-icon .ex:hover {
+  font-size: 1.2em;
+  color: red;
+}
+
+.done-through {
+  text-decoration: line-through;
 }
 

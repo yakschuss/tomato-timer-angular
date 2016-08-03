@@ -17,6 +17,6 @@
 
 
   angular
-    .module('tomatoTimer', ['ui.router'])
+    .module('tomatoTimer', ['ui.router', 'firebase'])
     .config(config);
 })();
