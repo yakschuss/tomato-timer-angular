@@ -3,7 +3,7 @@
 
     var Timer = {};
 
-    Timer.time = 2  ;
+    Timer.time = 25 * 60;
     Timer.btnTxt = "Start";
     Timer.workTimer = true;
     Timer.completedSessions = 0;
@@ -22,7 +22,7 @@
         if(Timer.time == -1 && Timer.completedSessions == 3) {
           $interval.cancel(Timer.timer);
           Timer.isRunning = false;
-          Timer.time = 30;
+          Timer.time = 30 * 60;
           Timer.completedSessions = 0;
           Timer.onBreak = true;
           Timer.btnTxt = "Take A Break";
@@ -31,7 +31,7 @@
         else if (Timer.time == -1 && Timer.completedSessions > 0 && Timer.completedSessions < 3){
           $interval.cancel(Timer.timer);
           Timer.isRunning = false;
-          Timer.time = 5;
+          Timer.time = 5 * 60;
           Timer.completedSessions += 1;
           Timer.onBreak = true;
           Timer.btnTxt = "Take A Break";
@@ -42,7 +42,7 @@
         else if(Timer.time == -1) {
           $interval.cancel(Timer.timer);
           Timer.isRunning = false;
-          Timer.time = 2  ;
+          Timer.time = 25 * 60  ;
           Timer.completedSessions += 1;
           Timer.btnTxt = "Next Session";
           myDing.play();
@@ -60,7 +60,7 @@
         $interval.cancel(Timer.timer);
         Timer.isRunning = false;
         if (Timer.workTimer == true) {
-          Timer.time = 2;
+          Timer.time = 25 * 60;
           Timer.btnTxt = "Start Working";
         } else {
           Timer.time = 5;
@@ -91,7 +91,7 @@
           myDing.play();
           Timer.isRunning = false;
           Timer.btnTxt = "Nice Work! Start Again!"
-          Timer.time = 2  ;
+          Timer.time = 25 * 60;
         }
       }.bind(this), 1000);
     }
