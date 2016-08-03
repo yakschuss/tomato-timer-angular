@@ -107,17 +107,9 @@ html {
   letter-spacing: .5px;
   margin-bottom: 20px;
 }
-.task-list .task-item-icon .check:hover {
-  font-size: 1.2em;
+.task-list .task-item:hover {
+  font-size: 2.2em;
   color: #449D44;
 }
 
-.task-list .task-item-icon .ex:hover {
-  font-size: 1.2em;
-  color: red;
-}
-
-.done-through {
-  text-decoration: line-through;
-}
 

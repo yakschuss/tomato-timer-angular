@@ -3,15 +3,15 @@
     <div class="form-group">
       <p class="task-header">Task List</p>
 
-    <form ng-submit="addTask()">
-      <input class="new-task-input form-control" ng-model="newTaskText" />
-      <button class="new-task-submit btn btn-success" type="submit">Submit</button>
-    </form>
+      <form ng-submit="addTask()">
+        <input class="new-task-input form-control" ng-model="newTaskText" />
+        <button class="new-task-submit btn btn-success" type="submit">Submit</button>
+      </form>
 
       <ul class="task-list">
-        <li ng-repeat="task in tasks | orderBy: '-text'">
-<span class="fa fa-check task-item-icon check"> </span> {{ task.text }} <span
-  class="fa fa-times task-item-icon ex"></span>
+        <li class="task-item" ng-repeat="task in tasks | orderBy: '-text'"
+          ng-click="tasks.$remove(task)">
+          {{ task.text }}
         </li>
       </ul>
     </div>
